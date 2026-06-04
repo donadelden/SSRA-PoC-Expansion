@@ -1,0 +1,15 @@
+[package]
+name = "ssra"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rabe = {path = "./rabe/", features=["serde"]}
+bincode = "1.3.3"
+rand = "0.8"
+# Both already present transitively via rabe (aes-gcm 0.10 and sha2 0.10 are in
+# Cargo.lock); declared directly only so the payload layer can use the real
+# AES-256-GCM AEAD the paper specifies (Sec. 4.2/6) and the optional tamper-evident
+# audit chain can use real SHA-256. No new crate is added to the dependency graph.
+aes-gcm = "0.10"
+sha2 = "0.10"

@@ -1,0 +1,50 @@
+[package]
+name = "rabe"
+version = "0.4.1"
+description = "ABE Schemes implemented in rust."
+authors = [
+    "Schanzenbach, Martin <martin.schanzenbach@aisec.fraunhofer.de>",
+    "Bramm, Georg <georg.bramm@aisec.fraunhofer.de>",
+    "Schuette, Julian <julian.schuette@aisec.fraunhofer.de>"
+]
+keywords = ["pairing","crypto","cryptography", "abe"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/Fraunhofer-AISEC/rabe"
+repository = "https://github.com/Fraunhofer-AISEC/rabe"
+documentation = "https://docs.rs/rabe"
+
+[features]
+default = ["serde"]
+borsh = ["borsh/derive", "rabe-bn/borsh"]
+serde = ["serde/derive", "rabe-bn/serde"]
+
+[lib]
+name="rabe"
+crate-type=["rlib", "cdylib"]
+path = "src/lib.rs"
+
+[dependencies]
+aes-gcm = "0.10.3"
+borsh = { version = "1.5.0", optional = true, default-features = false }
+pest = "=2.7.10"
+pest_derive = "=2.7.10"
+permutation = "0.4.1"
+rabe-bn = { version = "0.4.23", optional = true, default-features = false }
+rand = "0.8.5"
+serde = { version = "1.0", optional = true, default-features = false }
+sha3 = "0.10.8"
+
+[workspace]
+
+members = [
+    "rabe-console"
+]
+
+[dev-dependencies]
+criterion = { version = "0.3", features = ["html_reports"]}
+rand = "0.8.5"
+
+[[bench]]
+name = "rabe"
+harness = false

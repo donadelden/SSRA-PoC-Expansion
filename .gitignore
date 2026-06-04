@@ -1,0 +1,3 @@
+/ssra/target
+/ssra/shared/*
+!/ssra/shared/.gitkeep
