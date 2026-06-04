@@ -5,18 +5,11 @@ The original commands are preserved, the RABE dependency is included in `ssra/ra
 
 ## Build with Docker
 
+While this could be theoretically be complied natively, the best solution is to run it using Docker:
+
 ```bash
 cd ssra
 docker build -t ssra .
-```
-
-## Original paper commands
-
-```bash
-docker run -v ./shared:/usr/src/myapp/shared -it --rm ssra tutor
-docker run -v ./shared:/usr/src/myapp/shared -it --rm ssra robot 1000
-docker run -v ./shared:/usr/src/myapp/shared -it --rm ssra user
-docker run -v ./shared:/usr/src/myapp/shared -it --rm ssra all 1000
 ```
 
 ## Journal-extension commands
@@ -81,3 +74,13 @@ experiments and summarise results:
 - `utils/run_exp.sh`: Collection of `docker run` invocations that reproduce the paper tables (e2e, bench-crypto, bench-policy, rotate, etc.) and moves the generated CSVs into named files under `shared/results/`.
 - `utils/run_exp_rpi.sh`: A variant of `run_exp.sh` that tags output CSVs with a `-rpi` suffix (contains only the script to be run in a Raspberry Pi).
 - `utils/stats.py`: Small Python utility that computes mean and standard deviation for numeric CSV columns and prints a compact (LaTeX-friendly)   summary line for inclusion in tables.
+
+
+## Original paper commands
+
+```bash
+docker run -v ./shared:/usr/src/myapp/shared -it --rm ssra tutor
+docker run -v ./shared:/usr/src/myapp/shared -it --rm ssra robot 1000
+docker run -v ./shared:/usr/src/myapp/shared -it --rm ssra user
+docker run -v ./shared:/usr/src/myapp/shared -it --rm ssra all 1000
+```
